@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom'
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"; 
 import '../App.css'
-import LoginStatusContext from "./contexts/LoginStatusContext";
+import LoginStatusContext from './contexts/LoginStatusContext';
 
-export default function Layout() {
+function Layout() {
 
   const [loginStatus, setLoginStatus] = useState(sessionStorage.getItem("loginStatus"));
 
@@ -33,3 +33,5 @@ export default function Layout() {
     </div>
   )
 }
+
+export default Layout;
