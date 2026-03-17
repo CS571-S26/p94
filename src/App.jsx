@@ -6,8 +6,20 @@ import RegisterPage from './pages/RegisterPage.jsx'
 import LogoutPage from './pages/LogoutPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Layout from './components/Layout.jsx'
+import { useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import {auth} from './firebase'
 
 function App() {
+
+  // use firebase for authentication and session storage to keep track of login status on the frontend.
+  // test firebase connection:
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+      console.log("Firebase connected. User:", user);
+    });
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
