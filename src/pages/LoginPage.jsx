@@ -1,10 +1,12 @@
 import { Form, Button } from 'react-bootstrap';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import LoginStatusContext from '../components/contexts/LoginStatusContext'; 
 
 export default function LoginPage() {
 
+    const [loginStatus, setLoginStatus] = useContext(LoginStatusContext);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -27,7 +29,8 @@ export default function LoginPage() {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
+            sessionStorage.setItem("loginStatus", true);
+            setLoginStatus(true);
             alert("Login successful!");
             navigate("/");
         })
