@@ -15,7 +15,10 @@ function Layout() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
               {loginStatus ? 
+              <>
                 <Nav.Link as={Link} to="logout">Logout</Nav.Link>
+                <Nav.Link as={Link} to="create">Create Flow</Nav.Link>
+              </>
               :
               <>
                 <Nav.Link as={Link} to="login">Login</Nav.Link>
