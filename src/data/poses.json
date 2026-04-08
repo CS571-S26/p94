@@ -75,9 +75,9 @@
     "name": "Firefly III",
     "sanskrit": "tittibhasana c",
     "category": "Standing",
-    "imageUrl": "",
-    "description": "",
-    "difficulty": "unknown"
+    "imageUrl": "https://pocketyoga.com/assets/images/full/TortoiseBindII.png",
+    "description": "From Firefly (Preparation), press your hands against the backs of your heels to bring your shoulders behind your knees. Heel-toe your feet together until your heels touch, then wrap your hands around your ankles and interlace your fingers. In the full extension of the pose, the back of your head rests on the backs of your heels.",
+    "difficulty": "Advanced"
   },
   {
     "name": "Standing Foot to Head",
@@ -795,7 +795,7 @@
     "name": "Reverse Corpse",
     "sanskrit": "advasana",
     "category": "Prone",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/CorpseReverse.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/CorpseFrontArmsForward.png",
     "description": "From a prone position, relax down onto your belly, legs extended straight back. Forehead and chin are centered allowing for a neutral neck and spine. Extend your arms overhead, palms facing down.",
     "difficulty": "Beginner"
   },
@@ -819,7 +819,7 @@
     "name": "Locust I",
     "sanskrit": "shalabhasana a",
     "category": "Prone",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/LocustI.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Locust.png",
     "description": "From a supine position lying on the belly (pad the floor below your pelvis and ribs with a folded blanket if needed) with the arms along the side body, palms facing up, lift the legs away from the floor until resting on the lower ribs, belly, and front pelvis with firm buttocks, energy extended through strong legs and active toes. The arms are engaged with the tops of the hands pressing down to the ground. Extend through your neck and take your eye gaze upwards. Avoid tilting the head back. Instead elongate the neck and the trapezius by engaging the latissimus dorsi muscle.",
     "difficulty": "Intermediate"
   },
@@ -843,7 +843,7 @@
     "name": "Sage Gheranda's",
     "sanskrit": "gherandasana",
     "category": "Prone",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Gherandasana.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/GherandaI_L.png",
     "description": "Begin in Bow (Preparation). Rotate the knuckles of one hand so they face forward and the elbow is toward the sky. Bend the knee as much as possible bringing the knee and sole of the foot as close to the ground as possible. Extend the opposite leg straight into the sky. Lift the chest and take your gaze upwards. Repeat on the opposite side.",
     "difficulty": "Advanced"
   },
@@ -875,7 +875,7 @@
     "name": "Box",
     "sanskrit": "chakravakasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Box.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/BoxNeutral.png",
     "description": "From a kneeling position, the knees and arms form a box with the spine and neck in a neutral position. The hips and shoulders are squared to the earth and the palms are rooted with the weight of the body equally distributed between the heel of the hands and the top of the knees. The joints are stacked with the wrists, elbows and shoulders in a straight line. The gaze is down.",
     "difficulty": "Beginner"
   },
@@ -899,7 +899,7 @@
     "name": "Cow",
     "sanskrit": "bitilasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Cow.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Dog.png",
     "description": "From Box, the ribcage is lifted with a gentle sway in the low back. The tailbone lifts up into dog tilt. The eyes are soft and the gaze is to the sky.",
     "difficulty": "Beginner"
   },
@@ -931,7 +931,7 @@
     "name": "Humble Flamingo",
     "sanskrit": "",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/HumbleFlamingo.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FlamingoHumble_L.png",
     "description": "Begin in Pyramid with Arms Extended and walk your hands back, away from your front foot, spin your fingertips backward and come up onto your fingertips. Keep your arms straight and your torso long, connected to your front leg. Engage your triceps, transfer as much weight into your fingertips and front heel, and then lift your back heel off the ground and bend your knee. Bring the heel of your bent knee in toward your glutes. All the weight is in your front heel and fingertips.",
     "difficulty": "Advanced"
   },
@@ -939,7 +939,7 @@
     "name": "Gate",
     "sanskrit": "parighasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Gate.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Gate_R.png",
     "description": "Begin in a kneeling position with your hips stacked over your knees. Extend one leg out to the side. Reach your arms overhead to create length and then extend your arms to the side toward your extended leg. Allow your bottom hand to rest softly on your extended leg while you stabilize your core to extend through the opposite side. Turn your torso upward and externally rotate your extended leg and toes.",
     "difficulty": "Beginner"
   },
@@ -947,7 +947,7 @@
     "name": "Horse",
     "sanskrit": "vatayanasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Horse.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Horse_R.png",
     "description": "Begin in Standing Half Lotus. Hinge forward and bring the knee of your half lotus down to the ground and turn your opposite foot slightly outward and in front of the knee. Externally rotate the hip above your grounded foot and keep your heel directly in front of your half lotus knee. Bring your chest up and look forward for balance. Bring your arms to Eagle position. The arm on top corresponds with the leg that is in lotus position. Tuck your tailbone as you lift your chest up and forward. Maintain your eagle arms by lifting them up and away from your chest. Repeat on the opposite side.",
     "difficulty": "Intermediate"
   },
@@ -955,7 +955,7 @@
     "name": "Lizard",
     "sanskrit": "uttana pristhasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Lizard.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Lizard_L.png",
     "description": "Begin in Box or Downward-Facing Dog. Step one foot forward to the outside edge of the same side hand. Both arms should be on the inside of your front bent knee. Keep your front knee stacked over your ankle. Stay on the ball of your back foot, extend it back as far as possible and actively keep your quadriceps engaged by drawing your kneecap up. Distribute your weight evenly among both of your hips. If you feel comfortable, lower down onto both forearms. Keep your chin lifted and your chest open.",
     "difficulty": "Intermediate"
   },
@@ -963,7 +963,7 @@
     "name": "Lunge",
     "sanskrit": "",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Lunge.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Lunge_L.png",
     "description": "The weight of the body is supported on the front foot and the back toes. The front knee is bent directly above the ankle in a 90-degree angle to the ankle. The back heel is pressed to the back. The inner thighs scissor toward each other and the hips are squared. The ribcage is lifted and the heart is open. The fingertips straddle the front leg and rest softly on the earth for balance. You may use a block if necessary to keep the proper alignment. The gaze is down and slightly forward.",
     "difficulty": "Beginner"
   },
@@ -971,7 +971,7 @@
     "name": "Crooked Monkey",
     "sanskrit": "",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/CrookedMonkey.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/thumbnails146/CrookedMonkey_L-tn146.png",
     "description": "Begin in a low lunge with both hands on the inside of your front foot and bent knee. Drop your back knee to the ground, send it back further and hinge forward slightly to open your hip flexor. Pivot your top foot to the corner at about a 45-degree angle. Flex and firm up your top foot and ankle then allow your front bent knee to rotate outward. Ground your outside palm to the mat. Bend your back knee, reach around with your free hand to catch your foot or ankle and externally rotate your shoulder. Ensure the weight is on top of your knee and not directly on your knee cap. Allow your spine to twist and your chest to rotate upward, broadening your collar bone.",
     "difficulty": "Intermediate"
   },
@@ -995,7 +995,7 @@
     "name": "Upward Plank",
     "sanskrit": "purvottanasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/UpwardPlank.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/PlankUpward.png",
     "description": "From a seated position place the hands on the floor about one foot behind the hips with the fingertips pointed forward toward the hips. On an inhale press through the hands and feet to lift the hips as high as possible. Keep the inner line of the feet together and seal them into the mat as much as possible. Relax the head back and gaze at the tip of your nose.",
     "difficulty": "Intermediate"
   },
@@ -1003,7 +1003,7 @@
     "name": "Low Push-up",
     "sanskrit": "chaturanga dandasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Chaturanga.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FourLimbedStaff.png",
     "description": "From a prone position, the weight of the body is supported on the hands and the toes. The body is approximately 5 inches above and parallel to the earth. The abdomen is pulled up toward the spine. The pelvis is tucked. The palms are flat. The elbows are close to the side body and bent in a 90-degree angle and inline with the wrists. The toes are rooted into the earth as the heels push back. The gaze is down.",
     "difficulty": "Intermediate"
   },
@@ -1019,7 +1019,7 @@
     "name": "Sage Visvamitra's",
     "sanskrit": "vishvamitrasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Visvamitrasana.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/VisvamitraFull_L.png",
     "description": "Begin in Lizard with Straight Arms and place your inside shoulder underneath your front thigh. Curl up your back toes and pivot your foot down as if in a Warrior pose. Ground the palm that is rooted under your front thigh, walk your front foot slightly to the opposite site to get the shoulder deep under your thigh. Begin to shift your weight back slightly. Bend your knee slightly to lift your foot off the ground and then straighten your leg. Ground down firmly to the outer edge of your back foot and your front palm. Roll your chest toward the sky and allow your gaze to follow.",
     "difficulty": "Advanced"
   },
@@ -1027,7 +1027,7 @@
     "name": "Side Plank",
     "sanskrit": "vasishthasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/SidePlank.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/PlankSide_R.png",
     "description": "From an arm balance position the weight of the body is supported on one side and distributed equally between the bottom arm and foot while the other (top) arm lifts with fingers spread wide and the other (top) foot stacks on top. The grounded (bottom) foot is flat and gripping the earth from the outside edge of the foot. If flexibility of the foot is limited then instead of gripping the earth with a flat foot, the weight of the body is balanced on the side edge of the foot that is flexed instead of flat. The arm supporting the weight of the body and the grounded foot actively press into the floor as the shoulder blades firm against the back and then widen away from the spine drawing toward the tailbone. Bandhas are engaged to maintain balance and stability. The crown of the head reaches away from the neck and the gaze is up toward the hand.",
     "difficulty": "Intermediate"
   },
@@ -1035,7 +1035,7 @@
     "name": "Inverted Staff",
     "sanskrit": "dvi pada viparita dandasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/InvertedStaff.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/StaffInverted.png",
     "description": "From Half Wheel, draw the elbows to the floor shoulder-distance apart and interlace the fingers around the head as in Supported Headstand. Press firmly into the forearms and lift the head off the floor, extend the legs straight, draw the feet together and energize down through the legs and feet.",
     "difficulty": "Advanced"
   },
@@ -1051,7 +1051,7 @@
     "name": "Tiger",
     "sanskrit": "vyaghrasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Tiger.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Tiger_L.png",
     "description": "Come into One Legged Table. Bend your floating knee and reach your heel upward and toward your head. Keep your hips at the same level. Find a gentle backbend and draw your navel toward your spine. Palms flat, arms straight and shoulders over wrists.",
     "difficulty": "Beginner"
   },
@@ -1075,7 +1075,7 @@
     "name": "Wild Thing",
     "sanskrit": "chamatkarasana",
     "category": "Arm & Leg Support",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/WildThing.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/WildThing_R.png",
     "description": "From Downward-Facing Dog pose, elevate one leg toward the sky and stack the corresponding hip over the other hip. Bring the upper heel as close to the buttocks as possible. The hips remain stacked; then bring the shoulders forward slowly over the hands. Replace the corresponding hand to the upraised leg with the other hand and flip yourself over and extend the top hand forward. The bottom foot is now facing toward the front of the mat and you remain on the ball of the top foot and the corresponding knee is bent. Continue to lift hips up toward the sky and continue reaching the free hand toward the front of the room and slightly downwards. Allow the head to curl back.",
     "difficulty": "Intermediate"
   },
@@ -1115,7 +1115,7 @@
     "name": "Eight Angle",
     "sanskrit": "ashtavakrasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/EightAngle.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/EightAngle_R.png",
     "description": "Begin in Easy pose, lift one knee up and make a shelf with the respective arm. Slip the shoulder underneath this knee until the knee rests high up on the back of the shoulder. Bend both elbows to a 90-degree angle and lean forward. Bring the other foot over to meet the first and hook the feet. Lean slightly toward the opposite side to place more weight on the corresponding side and begin to lift both feet off the ground. Extend both legs simultaneously leaning your torso forward and lowering it until it is parallel to the mat. Squeeze your upper arm between your thighs. Use that pressure to help twist your torso to the opposite side. Keep your elbows in close to the torso. Gaze is toward the ground.",
     "difficulty": "Advanced"
   },
@@ -1123,7 +1123,7 @@
     "name": "Elbow Balance",
     "sanskrit": "shayanasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ElbowBalance.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/RelaxedStance.png",
     "description": "Start in your Forearm Balance. Press your forearms firmly into the ground and engage your core. Shift your weight slightly to move your legs past your head then shift more weight toward your elbows. Lift one hand from the ground and bring it to your chin. If stable, bring the opposite hand to your chin for full balance.",
     "difficulty": "Advanced"
   },
@@ -1131,7 +1131,7 @@
     "name": "Elephant Trunk",
     "sanskrit": "eka hasta bhujasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ElephantTrunk.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/ElephantTrunk_R.png",
     "description": "Begin in Rock the Baby by bringing the knee and foot into the creases of your elbows. Release your foot, keep it lifted and send it forward. At the same time, thread the arm that is closest to your knee thru to create a trunk with the leg as high up on your shoulder as possible. Ground your palms evenly in line with your shoulders and sit up straight. Energize through your straight leg. Hinge your chest forward slightly for leverage, press into your palms, straighten your arms, engage your core and lift your body off the ground. Hold for a few breaths and repeat on the opposite side.",
     "difficulty": "Intermediate"
   },
@@ -1147,7 +1147,7 @@
     "name": "Firefly I",
     "sanskrit": "tittibhasana a",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/FireflyI.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Firefly.png",
     "description": "The arms are straight and the palms are pressed into the earth. The body is supported on the straight arms with the eye of the elbows to the front. The legs are extended straight and forward from on the outside of the arms. The ribcage is lifted. The gaze is forward or at the nose.",
     "difficulty": "Advanced"
   },
@@ -1163,7 +1163,7 @@
     "name": "Flying Man",
     "sanskrit": "eka pada koundinyasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingMan.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/LungeHandsOnMatFlying_R.png",
     "description": "From a lunge position, the palms are rooted into the earth on the inside of the thigh. Both elbows are bent in a 90-degree angle with one leg forward, extended and resting softly on the elbow. The other leg is extended back either balanced on the toes or suspended in flight with active toes. The Body is parallel to the earth. The gaze is to the front.",
     "difficulty": "Advanced"
   },
@@ -1171,7 +1171,7 @@
     "name": "Revolved Flying Man",
     "sanskrit": "parivritta eka pada koundinyasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingManRevolved.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingManRevolved_R.png",
     "description": "Starting from Downward-Facing Dog pose, bend both elbows to a 90-degree angle then cross one leg over the opposite elbow and extend the leg. The other leg is extended back either balanced on the toes or suspended in flight with active toes. The body is parallel to the earth. The gaze is to the front.",
     "difficulty": "Advanced"
   },
@@ -1179,7 +1179,7 @@
     "name": "Forearm Balance",
     "sanskrit": "pincha mayurasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ForearmBalance.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FeatheredPeacock.png",
     "description": "From an inverted position, with the body perpendicular to the earth, the weight of the body is supported on the forearms that are parallel and pressed firmly into the earth. The palms are flat. The knuckles are evenly pressed into the earth. The fingers are spread wide. Both legs reach up toward the sky in a straight line with the pelvis tucked. The ribcage is lifted. The gaze is forward.",
     "difficulty": "Advanced"
   },
@@ -1187,7 +1187,7 @@
     "name": "Grasshopper",
     "sanskrit": "maksikanagasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/Grasshopper.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Grasshopper_L.png",
     "description": "Begin in Revolved Figure Four. Sit a little deeper and be sure you have a strong side twist with the upper part of your arm connected to the sole of your flexed foot. Stay in your figure four twist as you drop your hands flat to the ground. Bend your elbows to about 90 degrees and shift your weight forward to lift the back foot off the floor. Try to straighten your floating leg forward and gaze to the toes of your floating leg.",
     "difficulty": "Advanced"
   },
@@ -1219,7 +1219,7 @@
     "name": "Himalayan Duck",
     "sanskrit": "karandavasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/HimalayanDuck.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Duck.png",
     "description": "Come into your Lotus. Shift your weight forward onto your knees and ground your forearms shoulder width apart, fingers spread wide. Engage your core and press your forearms into the ground to lift off. Bring your knees upward to the back of your arms. Keep rounding your upper back and press your spine upward to stay engaged.",
     "difficulty": "Advanced"
   },
@@ -1227,7 +1227,7 @@
     "name": "Flying Lizard",
     "sanskrit": "",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingLizard.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingLizard_L.png",
     "description": "Come into your Lizard with Straight Arms and stay on your back toes. Bend your elbows into Chaturanga arms and stay squared by keeping your shoulders in line with your elbows. Walk your inside shoulder under your front bent thigh so your thigh is high on your tricep. Hinge your body forward and lift your front foot off the ground, gaze forward. Continue hugging your arm with your thigh and pull your heel under and up toward your glutes. Float your back extended leg off the floor.",
     "difficulty": "Advanced"
   },
@@ -1235,7 +1235,7 @@
     "name": "Moon Bird",
     "sanskrit": "eka pada shirshasana c",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/MoonBird.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FootBehindHeadElevated_R.png",
     "description": "Begin in One Leg Behind the Head I. Ground your palms by your hips. Press into your palms, straighten your arms and lift your hips off the ground. Extend through your straight leg and using your core, bring it to about 60 to 75 degrees from the ground toward your chin.",
     "difficulty": "Advanced"
   },
@@ -1251,7 +1251,7 @@
     "name": "Pendant",
     "sanskrit": "lolasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "httpsocketyoga.com/assets/images/full/Pendant.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/Pendant.png",
     "description": "Begin in a seated position. Cross your shins and hinge forward. Place the left sole of your foot beneath your right buttock and the right sole of your foot beneath your left buttock so that your right shin is in front of your left calf. Place your palms on the ground slightly in front of your hips, engage your core and lift up. Keep your thighs close to your chest, straighten your arms and point your toes.",
     "difficulty": "Intermediate"
   },
@@ -1259,7 +1259,7 @@
     "name": "Flying Pigeon",
     "sanskrit": "eka pada galavasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/FlyingPigeon.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/PigeonFlying_L.png",
     "description": "Begin in Tree with Arms Up pose, standing on one leg. Release the foot from the inner thigh and place the ankle above the opposite knee. Bend the standing knee and fold forward, bringing the palms to the floor. Bend the elbows to about 90 degrees and hook the toes of the foot on the opposite upper arm. Bring the weight of the body forward as the standing foot comes off. Start to straighten the leg behind.",
     "difficulty": "Advanced"
   },
@@ -1299,7 +1299,7 @@
     "name": "Shoulder Pressing",
     "sanskrit": "bhuja pidasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ShoulderPressing.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/ScaleForward.png",
     "description": "Come into Garland pose. Take your arms through your legs and place your palms flat on the floor behind your ankles. You may need to slightly lift up your hips to get there. Fingers face forward. Work your upper arm as high up under your knees as possible. Bend your elbows to create a shelf. Hinge forward onto your palms until your feet begin to lift off. Press firmly into the earth as you play with lifting one foot, then the other. If available, lift both feet and cross your ankles.",
     "difficulty": "Advanced"
   },
@@ -1307,7 +1307,7 @@
     "name": "Shoulder Stand with Lotus Legs",
     "sanskrit": "urdhva padmasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ShoulderStandLotus.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/ShoulderstandLotus.png",
     "description": "From your Supported Shoulder Stand, with or without using your hands, begin to take your Lotus legs in the sky. Bend one knee and bring your ankle into the crease of your opposite hip and then repeat on the other side. Your hands can either support your lower back or be extended up by your side body in matchstick or touching your knees.",
     "difficulty": "Advanced"
   },
@@ -1315,7 +1315,7 @@
     "name": "Supported Shoulder Stand",
     "sanskrit": "salamba sarvangasana",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/ShoulderStandSupported.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/ShoulderstandSupported.png",
     "description": "From a supine position, the upper back is resting on the earth with the hips straight up toward the sky. The torso is perpendicular to the earth. The legs are fully extended and the toes are active. The hands are either supporting the lower back or extended up by the side body in matchstick. The weight rests on the center of the back of your skull and the neck maintains its natural curvature. The chest reaches toward the chin and the gaze is inward or toward the toes.",
     "difficulty": "Intermediate"
   },
@@ -1331,7 +1331,7 @@
     "name": "Two Legs Behind the Head II",
     "sanskrit": "dvi pada shirshasana b",
     "category": "Arm Balance & Inversion",
-    "imageUrl": "https://pocketyoga.com/assets/images/full/TwoLegsBehindHeadII.png",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/FootBehindHeadTwoLeggedElevated.png",
     "description": "Begin in Two Legs Behind the Head I. Release your palms to the ground and place them alongside your hips. Ground down into your palms, hinge slightly forward, straighten your arms and lift your hips. Maintain a long spine and keep your chin lifted off your chest so the ankles stay secure.",
     "difficulty": "Advanced"
   }
