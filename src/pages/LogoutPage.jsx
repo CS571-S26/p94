@@ -1,25 +1,14 @@
-import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router';
-import { getAuth, signOut } from 'firebase/auth';
-import LoginStatusContext from '../components/contexts/LoginStatusContext';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function LogoutPage() {
-  const [loginStatus, setLoginStatus] = useContext(LoginStatusContext);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const auth = getAuth();
+    useEffect(() => {
+        signOut(auth).then(() => navigate("/"));
+    }, []);
 
-    signOut(auth)
-      .then(() => {
-        sessionStorage.setItem("loginStatus", "false");
-        setLoginStatus(false);   // <-- triggers navbar update
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Logout error:", error);
-      });
-  }, []);
-
-  return <p>Logging out...</p>;
+    return <p className="text-center text-muted mt-5">Logging out...</p>;
 }

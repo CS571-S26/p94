@@ -1,56 +1,58 @@
-import { Form, Button } from 'react-bootstrap';
-import { useRef, useContext } from 'react';
-import { useNavigate } from 'react-router';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import LoginStatusContext from '../components/contexts/LoginStatusContext'; 
+import { Form, Button, Alert } from 'react-bootstrap';
+import { useState, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function LoginPage() {
-
-    const [loginStatus, setLoginStatus] = useContext(LoginStatusContext);
-
     const emailRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        
-        const auth = getAuth();
 
-        // check for valid email and password:
         if (!email || !password) {
-            alert("Please enter both email and password.");
+            setError("Please enter both email and password.");
             return;
         }
-        
-        // use firebase authentication to log in with email and password
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            sessionStorage.setItem("loginStatus", true);
-            setLoginStatus(true);
-            alert("Login successful!");
+
+        setError('');
+        setLoading(true);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
             navigate("/");
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert("Error: " + errorMessage);
-        });
-        
+        } catch (err) {
+            setError("Incorrect email or password. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     }
 
-    return<>
-        <h1>Login</h1>
-        <Form onSubmit={handleLogin}>
-        <Form.Label htmlFor="emailInput">Email</Form.Label>
-        <Form.Control id="emailInput" ref={emailRef}></Form.Control>
-        <Form.Label htmlFor="passwordInput">Password</Form.Label>
-        <Form.Control id="passwordInput" type="password" ref={passwordRef}></Form.Control>
-        <br/>
-        <Button type="submit">Login</Button>
-        </Form>
-    </>
+    return (
+        <div style={{ maxWidth: 400, margin: '2rem auto' }}>
+            <h2 className="mb-4" style={{ fontWeight: 500 }}>Log in</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleLogin}>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="emailInput">Email</Form.Label>
+                    <Form.Control id="emailInput" type="email" ref={emailRef} />
+                </Form.Group>
+                <Form.Group className="mb-4">
+                    <Form.Label htmlFor="passwordInput">Password</Form.Label>
+                    <Form.Control id="passwordInput" type="password" ref={passwordRef} />
+                </Form.Group>
+                <Button type="submit" variant="primary" className="w-100" disabled={loading}>
+                    {loading ? 'Logging in...' : 'Log in'}
+                </Button>
+            </Form>
+            <p className="text-center text-muted mt-3" style={{ fontSize: '0.9rem' }}>
+                Don't have an account? <Link to="/register">Register</Link>
+            </p>
+        </div>
+    );
 }

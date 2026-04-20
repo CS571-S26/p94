@@ -1,52 +1,76 @@
-import { Form, Button } from 'react-bootstrap';
-import { useRef } from 'react';
-import { useNavigate } from 'react-router';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { useState, useRef } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function RegisterPage() {
     const emailRef = useRef();
     const passwordRef = useRef();
+    const confirmPasswordRef = useRef();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    function handleRegister(e) {
+    async function handleRegister(e) {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        
-        const auth = getAuth();
+        const confirmPassword = confirmPasswordRef.current.value;
 
-        // check for valid email and password:
-        if (!email || !password) {
-            alert("Please enter both email and password.");
+        if (!email || !password || !confirmPassword) {
+            setError("Please fill in all fields.");
+            return;
+        }
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            alert("Registration successful! Please log in.");
-            navigate("/login");
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert("Error: " + errorMessage);
-            // ..
-        });
-
+        setError('');
+        setLoading(true);
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            navigate("/");
+        } catch (err) {
+            if (err.code === 'auth/email-already-in-use') {
+                setError("An account with this email already exists.");
+            } else {
+                setError("Failed to create account. Please try again.");
+            }
+        } finally {
+            setLoading(false);
+        }
     }
 
-    return<>
-        <h1>Register</h1>
-        <Form onSubmit={handleRegister}>
-        <Form.Label htmlFor="emailInput">Email</Form.Label>
-        <Form.Control id="emailInput" ref={emailRef}></Form.Control>
-        <Form.Label htmlFor="passwordInput">Password</Form.Label>
-        <Form.Control id="passwordInput" type="password" ref={passwordRef}></Form.Control>
-        <br/>
-        <Button type="submit">Register</Button>
-        </Form>
-    </>
+    return (
+        <div style={{ maxWidth: 400, margin: '2rem auto' }}>
+            <h2 className="mb-4" style={{ fontWeight: 500 }}>Create an account</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleRegister}>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="emailInput">Email</Form.Label>
+                    <Form.Control id="emailInput" type="email" ref={emailRef} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="passwordInput">Password</Form.Label>
+                    <Form.Control id="passwordInput" type="password" ref={passwordRef} />
+                </Form.Group>
+                <Form.Group className="mb-4">
+                    <Form.Label htmlFor="confirmPasswordInput">Confirm password</Form.Label>
+                    <Form.Control id="confirmPasswordInput" type="password" ref={confirmPasswordRef} />
+                </Form.Group>
+                <Button type="submit" variant="primary" className="w-100" disabled={loading}>
+                    {loading ? 'Creating account...' : 'Create account'}
+                </Button>
+            </Form>
+            <p className="text-center text-muted mt-3" style={{ fontSize: '0.9rem' }}>
+                Already have an account? <Link to="/login">Log in</Link>
+            </p>
+        </div>
+    );
 }
- 

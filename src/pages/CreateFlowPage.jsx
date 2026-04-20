@@ -1,8 +1,14 @@
 import poses from '../data/poses.json';
 import PoseCard from '../components/PoseCard.jsx';
-import { Row, Col, Form, Button, Container } from 'react-bootstrap';
+import { Row, Col, Form, Button, Container, Toast, ToastContainer } from 'react-bootstrap';
 import { useState } from 'react';
 import FlowStrip from '../components/FlowStrip.jsx';
+import SaveFlowModal from '../components/SaveFlowModal.jsx';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase'
+
 
 
 const CATEGORIES = [...new Set(poses.map(p => p.category))].sort();
@@ -14,6 +20,11 @@ export default function CreateFlowPage() {
     const [filterCategory, setFilterCategory] = useState("");
     const [filterDifficulty, setFilterDifficulty] = useState("");
     const [flow, setFlow] = useState([]);
+
+    const [user] = useAuthState(auth);
+    const [showModal, setShowModal] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     const [committed, setCommitted] = useState({
         searchTerm: "",
@@ -54,62 +65,113 @@ export default function CreateFlowPage() {
         setFlow(newFlow);
     };
 
-    return <Container className="py-4">
-        <h1 className="mb-4" style={{ fontWeight: 500, fontSize: '1.6rem' }}>Create flow</h1>
+    const handleSave = async (flowName) => {
+        if (!user) return;
+        setIsSaving(true);
+        try {
+            const flowsRef = collection(db, 'users', user.uid, 'flows');
+            await addDoc(flowsRef, {
+                name: flowName,
+                poses: flow.map(({ id, ...pose }) => pose),
+                createdAt: serverTimestamp(),
+            });
+            setFlow([]);
+            setShowModal(false);
+            setShowToast(true);
+        } catch (err) {
+            console.error('Failed to save flow:', err);
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
-        {/* Flow panel */}
-        <div className="bg-light rounded-3 p-3 mb-4">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                    <div className="text-uppercase text-muted" style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}>Your flow</div>
-                    <div style={{ fontWeight: 500 }}>{flow.length} {flow.length === 1 ? 'pose' : 'poses'}</div>
+    return (
+    <>
+         {/* Toast — sits in corner */}
+        <ToastContainer position="bottom-end" className="p-3">
+            <Toast
+                show={showToast}
+                onClose={() => setShowToast(false)}
+                delay={3000}
+                autohide
+                bg="success"
+            >
+                <Toast.Body className="text-white">
+                    Flow saved successfully!
+                </Toast.Body>
+            </Toast>
+        </ToastContainer>
+         <SaveFlowModal
+            show={showModal}
+            onClose={() => setShowModal(false)}
+            onSave={handleSave}
+            isSaving={isSaving}
+        />
+
+        <Container className="py-4">
+            <h1 className="mb-4" style={{ fontWeight: 500, fontSize: '1.6rem' }}>Create flow</h1>
+
+            {/* Flow panel */}
+            <div className="bg-light rounded-3 p-3 mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <div className="text-uppercase text-muted" style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}>Your flow</div>
+                        <div style={{ fontWeight: 500 }}>{flow.length} {flow.length === 1 ? 'pose' : 'poses'}</div>
+                    </div>
+                    <div className="d-flex gap-2">
+                        <Button variant="outline-secondary" size="sm" onClick={() => setFlow([])}>Clear</Button>
+                        <Button 
+                        variant="primary" 
+                        size="sm" 
+                        disabled={flow.length === 0}
+                        onClick={() => setShowModal(true)}>  
+                        Save flow
+                        </Button>
+                    </div>
                 </div>
-                <div className="d-flex gap-2">
-                    <Button variant="outline-secondary" size="sm" onClick={() => setFlow([])}>Clear</Button>
-                    <Button variant="primary" size="sm" disabled={flow.length === 0}>Save flow</Button>
+                <FlowStrip flow={flow} onReorder={reorderFlow} onRemove={removePose} />
+            </div>
+            {/* Search & filters */}
+            <Form onSubmit={handleSubmit} className="mb-4">
+                <div className="d-flex gap-2 mb-2">
+                    <Form.Control
+                        id="search"
+                        type="text"
+                        placeholder="Search by name or Sanskrit name"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <Button variant="primary" type="submit">Search</Button>
+                    <Button variant="outline-secondary" type="button" onClick={handleReset}>Reset</Button>
                 </div>
-            </div>
-            <FlowStrip flow={flow} onReorder={reorderFlow} onRemove={removePose} />
-        </div>
-        {/* Search & filters */}
-        <Form onSubmit={handleSubmit} className="mb-4">
-            <div className="d-flex gap-2 mb-2">
-                <Form.Control
-                    id="search"
-                    type="text"
-                    placeholder="Search by name or Sanskrit name"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <Button variant="primary" type="submit">Search</Button>
-                <Button variant="outline-secondary" type="button" onClick={handleReset}>Reset</Button>
-            </div>
-            <Row className="g-2">
-                <Col>
-                    <Form.Select id="category" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-                        <option value="">All categories</option>
-                        {CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                    </Form.Select>
-                </Col>
-                <Col>
-                    <Form.Select id="difficulty" value={filterDifficulty} onChange={(e) => setFilterDifficulty(e.target.value)}>
-                        <option value="">All difficulties</option>
-                        {DIFFICULTIES.map(diff => <option key={diff} value={diff}>{diff}</option>)}
-                    </Form.Select>
-                </Col>
+                <Row className="g-2">
+                    <Col>
+                        <Form.Select id="category" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
+                            <option value="">All categories</option>
+                            {CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                        </Form.Select>
+                    </Col>
+                    <Col>
+                        <Form.Select id="difficulty" value={filterDifficulty} onChange={(e) => setFilterDifficulty(e.target.value)}>
+                            <option value="">All difficulties</option>
+                            {DIFFICULTIES.map(diff => <option key={diff} value={diff}>{diff}</option>)}
+                        </Form.Select>
+                    </Col>
+                </Row>
+            </Form>
+
+            {/* Results */}
+            <p className="text-muted mb-3" style={{ fontSize: '0.85rem' }}>
+                {filteredPoses.length === 0 ? 'No poses found.' : `Showing ${filteredPoses.length} pose${filteredPoses.length === 1 ? '' : 's'}`}
+            </p>
+            <Row className="g-3">
+                {filteredPoses.map((pose, index) => (
+                    <Col xs={12} md={6} lg={4} xl={3} key={index}>
+                        <PoseCard pose={pose} onAdd={addPose} />
+                    </Col>
+                ))}
             </Row>
-        </Form>
-
-        {/* Results */}
-        <p className="text-muted mb-3" style={{ fontSize: '0.85rem' }}>
-            {filteredPoses.length === 0 ? 'No poses found.' : `Showing ${filteredPoses.length} pose${filteredPoses.length === 1 ? '' : 's'}`}
-        </p>
-        <Row className="g-3">
-            {filteredPoses.map((pose, index) => (
-                <Col xs={12} md={6} lg={4} xl={3} key={index}>
-                    <PoseCard pose={pose} onAdd={addPose} />
-                </Col>
-            ))}
-        </Row>
-    </Container>
+        </Container>
+    </>
+    );
 }

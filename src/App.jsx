@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import LogoutPage from './pages/LogoutPage.jsx'
 import CreateFlowPage from './pages/CreateFlowPage.jsx'
+import MyFlowsPage from './pages/MyFlowsPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Layout from './components/Layout.jsx'
 import { useEffect } from 'react'
@@ -29,6 +30,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/logout" element={<LogoutPage />}></Route>
         <Route path="/create" element={<CreateFlowPage />}></Route>
+        <Route path="/my-flows" element={<MyFlowsPage />}></Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

@@ -35,14 +35,11 @@ export default function PoseCard(props) {
                 {expanded ? "Collapse Description" : "Expand Description"}
             </Button>
             )}
-            <Button
-                variant="outline-primary"
-                size="sm"
-                className="mt-auto w-100"
-                onClick={() => props.onAdd(props.pose)}
-            >
-                + Add to flow
-            </Button>
+            {props.onAdd && (
+                <Button variant="outline-primary" size="sm" className="mt-auto w-100" onClick={() => props.onAdd(pose)}>
+                    + Add to flow
+                </Button>
+            )}
         </Card.Body>
     </Card>
 
