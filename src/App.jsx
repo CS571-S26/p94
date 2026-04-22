@@ -8,6 +8,7 @@ import CreateFlowPage from './pages/CreateFlowPage.jsx'
 import MyFlowsPage from './pages/MyFlowsPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Layout from './components/Layout.jsx'
+import PosesPage from './pages/PosesPage.jsx'
 import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import {auth} from './firebase'
@@ -28,6 +29,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/poses" element={<PosesPage />} />
         <Route path="/logout" element={<LogoutPage />}></Route>
         <Route path="/create" element={<CreateFlowPage />}></Route>
         <Route path="/my-flows" element={<MyFlowsPage />}></Route>

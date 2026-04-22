@@ -1,56 +1,30 @@
 import poses from '../data/poses.json';
-import PoseCard from '../components/PoseCard.jsx';
-import { Row, Col, Form, Button, Container, Toast, ToastContainer } from 'react-bootstrap';
+import { Button, Container, Toast, ToastContainer } from 'react-bootstrap';
 import { useState } from 'react';
 import FlowStrip from '../components/FlowStrip.jsx';
 import SaveFlowModal from '../components/SaveFlowModal.jsx';
 import { db } from '../firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, updateDoc, doc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase'
+import { useLocation } from 'react-router-dom';
+import PoseBrowser from '../components/PoseBrowser.jsx';
 
-
-
-const CATEGORIES = [...new Set(poses.map(p => p.category))].sort();
-const DIFFICULTIES = [...new Set(poses.map(p => p.difficulty))].sort();
 
 export default function CreateFlowPage() {
-
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filterCategory, setFilterCategory] = useState("");
-    const [filterDifficulty, setFilterDifficulty] = useState("");
-    const [flow, setFlow] = useState([]);
+    
+    const location = useLocation();
+    const editingFlow = location.state?.flow ?? null;
+    const [flow, setFlow] = useState(
+        editingFlow
+            ? editingFlow.poses.map(pose => ({ id: crypto.randomUUID(), ...pose }))
+            : []
+    );
 
     const [user] = useAuthState(auth);
     const [showModal, setShowModal] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [showToast, setShowToast] = useState(false);
-
-    const [committed, setCommitted] = useState({
-        searchTerm: "",
-        filterCategory: "",
-        filterDifficulty: ""
-    });
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setCommitted({ searchTerm, filterCategory, filterDifficulty });
-    };
-
-    const handleReset = () => {
-        setSearchTerm("");
-        setFilterCategory("");
-        setFilterDifficulty("");
-        setCommitted({ searchTerm: "", filterCategory: "", filterDifficulty: "" });
-    };
-
-    const filteredPoses = poses.filter(pose => {
-        const matchesSearch = pose.name.toLowerCase().includes(committed.searchTerm.toLowerCase())
-            || pose.sanskrit.toLowerCase().includes(committed.searchTerm.toLowerCase());
-        const matchesCategory = committed.filterCategory ? pose.category === committed.filterCategory : true;
-        const matchesDifficulty = committed.filterDifficulty ? pose.difficulty === committed.filterDifficulty : true;
-        return matchesSearch && matchesCategory && matchesDifficulty;
-    });
 
     // flow creation functions:
     const addPose = (pose) => {
@@ -69,12 +43,19 @@ export default function CreateFlowPage() {
         if (!user) return;
         setIsSaving(true);
         try {
-            const flowsRef = collection(db, 'users', user.uid, 'flows');
-            await addDoc(flowsRef, {
-                name: flowName,
-                poses: flow.map(({ id, ...pose }) => pose),
-                createdAt: serverTimestamp(),
-            });
+            if (editingFlow) {
+                // overwrite existing document
+                await updateDoc(doc(db, 'users', user.uid, 'flows', editingFlow.id), {
+                    name: flowName,
+                    poses: flow.map(({ id, ...pose }) => pose),
+                });
+            } else {
+                await addDoc(collection(db, 'users', user.uid, 'flows'), {
+                    name: flowName,
+                    poses: flow.map(({ id, ...pose }) => pose),
+                    createdAt: serverTimestamp(),
+                });
+            }
             setFlow([]);
             setShowModal(false);
             setShowToast(true);
@@ -106,6 +87,7 @@ export default function CreateFlowPage() {
             onClose={() => setShowModal(false)}
             onSave={handleSave}
             isSaving={isSaving}
+            initialName={editingFlow?.name ?? ''}
         />
 
         <Container className="py-4">
@@ -120,57 +102,15 @@ export default function CreateFlowPage() {
                     </div>
                     <div className="d-flex gap-2">
                         <Button variant="outline-secondary" size="sm" onClick={() => setFlow([])}>Clear</Button>
-                        <Button 
-                        variant="primary" 
-                        size="sm" 
-                        disabled={flow.length === 0}
-                        onClick={() => setShowModal(true)}>  
-                        Save flow
+                        <Button variant="primary" size="sm" disabled={flow.length === 0} onClick={() => setShowModal(true)}>
+                            Save flow
                         </Button>
                     </div>
                 </div>
                 <FlowStrip flow={flow} onReorder={reorderFlow} onRemove={removePose} />
             </div>
-            {/* Search & filters */}
-            <Form onSubmit={handleSubmit} className="mb-4">
-                <div className="d-flex gap-2 mb-2">
-                    <Form.Control
-                        id="search"
-                        type="text"
-                        placeholder="Search by name or Sanskrit name"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <Button variant="primary" type="submit">Search</Button>
-                    <Button variant="outline-secondary" type="button" onClick={handleReset}>Reset</Button>
-                </div>
-                <Row className="g-2">
-                    <Col>
-                        <Form.Select id="category" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-                            <option value="">All categories</option>
-                            {CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                        </Form.Select>
-                    </Col>
-                    <Col>
-                        <Form.Select id="difficulty" value={filterDifficulty} onChange={(e) => setFilterDifficulty(e.target.value)}>
-                            <option value="">All difficulties</option>
-                            {DIFFICULTIES.map(diff => <option key={diff} value={diff}>{diff}</option>)}
-                        </Form.Select>
-                    </Col>
-                </Row>
-            </Form>
 
-            {/* Results */}
-            <p className="text-muted mb-3" style={{ fontSize: '0.85rem' }}>
-                {filteredPoses.length === 0 ? 'No poses found.' : `Showing ${filteredPoses.length} pose${filteredPoses.length === 1 ? '' : 's'}`}
-            </p>
-            <Row className="g-3">
-                {filteredPoses.map((pose, index) => (
-                    <Col xs={12} md={6} lg={4} xl={3} key={index}>
-                        <PoseCard pose={pose} onAdd={addPose} />
-                    </Col>
-                ))}
-            </Row>
+            <PoseBrowser onAdd={addPose} />
         </Container>
     </>
     );

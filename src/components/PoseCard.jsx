@@ -36,7 +36,7 @@ export default function PoseCard(props) {
             </Button>
             )}
             {props.onAdd && (
-                <Button variant="outline-primary" size="sm" className="mt-auto w-100" onClick={() => props.onAdd(pose)}>
+                <Button variant="outline-primary" size="sm" className="mt-auto w-100" onClick={() => props.onAdd(props.pose)}>
                     + Add to flow
                 </Button>
             )}

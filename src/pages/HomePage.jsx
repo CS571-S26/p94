@@ -7,7 +7,7 @@ import { Container, Button, Row, Col } from 'react-bootstrap';
 import poses from '../data/poses.json';
 import PoseCard from '../components/PoseCard.jsx';
 
-const SAMPLE_FLOW = ['Mountain', 'Warrior I', 'Tree', "Child's Pose", 'Pigeon'];
+const SAMPLE_FLOW_NAMES = ["Child's",  "Downward-Facing Dog", "Warrior II", "Extended Side Angle", "Reverse Triangle"]; 
 const PREVIEW_POSES = poses.slice(0, 4);
 
 export default function HomePage() {
@@ -35,7 +35,7 @@ export default function HomePage() {
 
 function LoggedOutView() {
     const navigate = useNavigate();
-    const SAMPLE_FLOW = poses.slice(0, 5);
+    const SAMPLE_FLOW = SAMPLE_FLOW_NAMES.map(name => poses.find(p => p.name === name)).filter(Boolean);
 
     return (
         <Container className="py-5">
@@ -54,21 +54,22 @@ function LoggedOutView() {
                 <p className="text-muted mb-2" style={{ fontSize: '0.75rem' }}>Sample flow</p>
                 <div className="d-flex gap-2 align-items-center overflow-auto pb-1">
                     {SAMPLE_FLOW.map((pose, i) => (
-                        <>
-                            <div key={pose.name} style={{
-                                display: 'flex', flexDirection: 'column', alignItems: 'center',
-                                gap: 4, padding: '8px', width: 70, flexShrink: 0,
-                                background: 'white', border: '0.5px solid #dee2e6', borderRadius: 8
-                            }}>
-                                <img src={pose.imageUrl} alt={pose.name}
-                                    style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 5 }} />
-                                <span style={{ fontSize: 9, textAlign: 'center', color: '#6c757d' }}>{pose.name}</span>
-                            </div>
-                            {i < SAMPLE_FLOW.length - 1 && (
-                                <span key={`arrow-${i}`} style={{ color: '#adb5bd', fontSize: 18 }}>›</span>
-                            )}
-                        </>
-                    ))}
+                    <div key={pose.name} className="d-flex align-items-center">
+                        <div style={{
+                            display: 'flex', flexDirection: 'column', alignItems: 'center',
+                            gap: 4, padding: '8px', width: 70, flexShrink: 0,
+                            background: 'white', border: '0.5px solid #dee2e6', borderRadius: 8
+                        }}>
+                            <img src={pose.imageUrl} alt={pose.name}
+                                style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: 5 }} />
+                            <span style={{ fontSize: 9, textAlign: 'center', color: '#6c757d' }}>{pose.name}</span>
+                        </div>
+
+                        {i < SAMPLE_FLOW.length - 1 && (
+                            <span style={{ color: '#adb5bd', fontSize: 18, margin: '0 4px' }}>›</span>
+                        )}
+                    </div>
+                ))}
                 </div>
             </div>
 
@@ -76,6 +77,7 @@ function LoggedOutView() {
             <p className="text-center text-muted mb-3" style={{ fontSize: '0.8rem' }}>
                 Browse from {poses.length}+ poses
             </p>
+           
             <Row className="g-3 mb-4">
                 {poses.slice(0, 4).map((pose, i) => (
                     <Col xs={6} md={3} key={i}>

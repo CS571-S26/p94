@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-export default function SaveFlowModal({ show, onClose, onSave, isSaving }) {
-    const [flowName, setFlowName] = useState('');
+export default function SaveFlowModal({ show, onClose, onSave, isSaving, initialName = '' }) {
+    
+    const [flowName, setFlowName] = useState(initialName);
+    
 
     const handleSave = () => {
         if (flowName.trim()) {
