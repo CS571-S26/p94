@@ -8,34 +8,30 @@ const DIFFICULTIES = [...new Set(poses.map(p => p.difficulty))].sort();
 
 export default function PoseBrowser({ onAdd }) {
     const [searchTerm, setSearchTerm] = useState('');
+    const [committedSearch, setCommittedSearch] = useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [filterDifficulty, setFilterDifficulty] = useState('');
-    const [committed, setCommitted] = useState({
-        searchTerm: '',
-        filterCategory: '',
-        filterDifficulty: ''
-    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setCommitted({ searchTerm, filterCategory, filterDifficulty });
+        setCommittedSearch(searchTerm);
     };
 
     const handleReset = () => {
         setSearchTerm('');
+        setCommittedSearch('');
         setFilterCategory('');
         setFilterDifficulty('');
-        setCommitted({ searchTerm: '', filterCategory: '', filterDifficulty: '' });
     };
 
     const filteredPoses = useMemo(() => poses.filter(pose => {
         const matchesSearch =
-            pose.name.toLowerCase().includes(committed.searchTerm.toLowerCase()) ||
-            pose.sanskrit.toLowerCase().includes(committed.searchTerm.toLowerCase());
-        const matchesCategory = committed.filterCategory ? pose.category === committed.filterCategory : true;
-        const matchesDifficulty = committed.filterDifficulty ? pose.difficulty === committed.filterDifficulty : true;
+            pose.name.toLowerCase().includes(committedSearch.toLowerCase()) ||
+            pose.sanskrit.toLowerCase().includes(committedSearch.toLowerCase());
+        const matchesCategory = filterCategory ? pose.category === filterCategory : true;
+        const matchesDifficulty = filterDifficulty ? pose.difficulty === filterDifficulty : true;
         return matchesSearch && matchesCategory && matchesDifficulty;
-    }), [committed]);
+    }), [committedSearch, filterCategory, filterDifficulty]);
 
     return (
         <>

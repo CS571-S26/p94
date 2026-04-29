@@ -2,7 +2,7 @@ import { DndContext, closestCenter } from '@dnd-kit/core';
 import { SortableContext, horizontalListSortingStrategy, arrayMove, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-function SortableChip({ item, index, onRemove }) {
+function SortableChip({ item, index, total, onRemove, onMove }) {
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: item.id });
 
     const style = {
@@ -14,6 +14,7 @@ function SortableChip({ item, index, onRemove }) {
 
     return (
         <div ref={setNodeRef} style={style}>
+            {/* position number */}
             <span style={{
                 position: 'absolute', top: -6, left: -6, zIndex: 1,
                 background: '#534AB7', color: '#fff',
@@ -24,24 +25,7 @@ function SortableChip({ item, index, onRemove }) {
                 {index + 1}
             </span>
 
-            <div style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center',
-                gap: 4, padding: '8px 10px', width: 80,
-                background: 'white', border: '0.5px solid #dee2e6',
-                borderRadius: 10, cursor: 'grab'
-            }}
-                {...attributes} {...listeners}
-            >
-                <img
-                    src={item.imageUrl}
-                    alt={item.name}
-                    style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, pointerEvents: 'none' }}
-                />
-                <span style={{ fontSize: 10, textAlign: 'center', color: '#6c757d', lineHeight: 1.3 }}>
-                    {item.name}
-                </span>
-            </div>
-
+            {/* remove button */}
             <button
                 onClick={() => onRemove(item.id)}
                 style={{
@@ -55,6 +39,66 @@ function SortableChip({ item, index, onRemove }) {
             >
                 ×
             </button>
+
+            {/* drag handle + image + name */}
+            <div
+                style={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center',
+                    gap: 4, padding: '8px 10px', width: 80, height: 90,
+                    background: 'white', border: '0.5px solid #dee2e6',
+                    borderRadius: 10, cursor: 'grab'
+                }}
+                {...attributes} {...listeners}
+            >
+                <img
+                    src={item.imageUrl}
+                    alt={item.name}
+                    style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, pointerEvents: 'none' }}
+                />
+                <span style={{ fontSize: 10, textAlign: 'center', color: '#6c757d', lineHeight: 1.3,
+                    width: '100%', overflow: 'hidden',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                 }}>
+                    {item.name}
+                </span>
+            </div>
+
+            {/* arrow buttons */}
+            <div style={{
+                display: 'flex', justifyContent: 'space-between',
+                marginTop: 4, gap: 2
+            }}>
+                <button
+                    onClick={() => onMove(index, index - 1)}
+                    disabled={index === 0}
+                    title="Move left"
+                    style={{
+                        flex: 1, padding: '2px 0', fontSize: 11,
+                        border: '0.5px solid #dee2e6', borderRadius: 4,
+                        background: 'white', cursor: index === 0 ? 'not-allowed' : 'pointer',
+                        color: index === 0 ? '#dee2e6' : '#6c757d',
+                        lineHeight: 1
+                    }}
+                >
+                    ‹
+                </button>
+                <button
+                    onClick={() => onMove(index, index + 1)}
+                    disabled={index === total - 1}
+                    title="Move right"
+                    style={{
+                        flex: 1, padding: '2px 0', fontSize: 11,
+                        border: '0.5px solid #dee2e6', borderRadius: 4,
+                        background: 'white', cursor: index === total - 1 ? 'not-allowed' : 'pointer',
+                        color: index === total - 1 ? '#dee2e6' : '#6c757d',
+                        lineHeight: 1
+                    }}
+                >
+                    ›
+                </button>
+            </div>
         </div>
     );
 }
@@ -67,6 +111,11 @@ export default function FlowStrip({ flow, onReorder, onRemove }) {
             const newIndex = flow.findIndex(p => p.id === over.id);
             onReorder(arrayMove(flow, oldIndex, newIndex));
         }
+    };
+
+    const handleMove = (fromIndex, toIndex) => {
+        if (toIndex < 0 || toIndex >= flow.length) return;
+        onReorder(arrayMove(flow, fromIndex, toIndex));
     };
 
     if (flow.length === 0) {
@@ -86,7 +135,9 @@ export default function FlowStrip({ flow, onReorder, onRemove }) {
                             key={item.id}
                             item={item}
                             index={index}
+                            total={flow.length}
                             onRemove={onRemove}
+                            onMove={handleMove}
                         />
                     ))}
                 </div>

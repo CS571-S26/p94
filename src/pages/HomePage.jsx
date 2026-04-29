@@ -8,7 +8,6 @@ import poses from '../data/poses.json';
 import PoseCard from '../components/PoseCard.jsx';
 
 const SAMPLE_FLOW_NAMES = ["Child's",  "Downward-Facing Dog", "Warrior II", "Extended Side Angle", "Reverse Triangle"]; 
-const PREVIEW_POSES = poses.slice(0, 4);
 
 export default function HomePage() {
     const [user] = useAuthState(auth);
@@ -41,7 +40,10 @@ function LoggedOutView() {
         <Container className="py-5">
             {/* Hero */}
             <div className="text-center mb-5">
-                <h1 style={{ fontWeight: 500, fontSize: '2rem' }}>Design your perfect yoga flow</h1>
+                <h1 className="mb-1" style={{fontWeight: 500, fontSize: '2.5rem' }}>
+                  Welcome to FlowState!
+                </h1>
+                <h1 style={{ fontWeight: 500, fontSize: '1.6rem' }}>Design your perfect yoga flow</h1>
                 <p className="text-muted mb-4">Browse poses, build sequences, and save flows to practice anytime.</p>
                 <div className="d-flex justify-content-center gap-2">
                     <Button variant="primary" onClick={() => navigate('/register')}>Get started</Button>
@@ -98,12 +100,11 @@ function LoggedOutView() {
 }
 
 function LoggedInView({ user, recentFlows, navigate }) {
-    const displayName = user.displayName || user.email.split('@')[0];
 
     return (
         <Container className="py-4">
             <h1 className="mb-1" style={{ fontWeight: 500, fontSize: '1.6rem' }}>
-                Welcome back, {displayName}
+                Welcome to FlowState!
             </h1>
             <p className="text-muted mb-4">Ready to build something new?</p>
 

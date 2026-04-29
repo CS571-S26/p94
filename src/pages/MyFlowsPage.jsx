@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { collection, getDocs, deleteDoc, doc, updateDoc, orderBy, query } from 'firebase/firestore';
 import { Row, Col, Card, Button, Modal, Form, Spinner } from 'react-bootstrap';
+import SuccessToast from '../components/SuccessToast';
 
 export default function MyFlowsPage() {
     const [user] = useAuthState(auth);
@@ -11,7 +12,14 @@ export default function MyFlowsPage() {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [viewFlow, setViewFlow] = useState(null); // holds the flow being viewed
+    const [toastMessage, setToastMessage] = useState('');
+    const [showToast, setShowToast] = useState(false);
+ 
 
+    const showSuccess = (message) => {
+    setToastMessage(message);
+    setShowToast(true);
+    };
 
     // rename modal state
     const [showRenameModal, setShowRenameModal] = useState(false);
@@ -58,6 +66,7 @@ export default function MyFlowsPage() {
                 f.id === renameTarget.id ? { ...f, name: newName.trim() } : f
             ));
             setShowRenameModal(false);
+            showSuccess('Flow renamed successfully!');
         } catch (err) {
             console.error('Failed to rename flow:', err);
         } finally {
@@ -76,6 +85,7 @@ export default function MyFlowsPage() {
             await deleteDoc(doc(db, 'users', user.uid, 'flows', deleteTarget.id));
             setFlows(prev => prev.filter(f => f.id !== deleteTarget.id));
             setShowDeleteModal(false);
+            showSuccess('Flow deleted.');
         } catch (err) {
             console.error('Failed to delete flow:', err);
         } finally {
@@ -154,7 +164,7 @@ export default function MyFlowsPage() {
                             <Col xs={12} sm={6} lg={4} key={flow.id}>
                                 <Card className="h-100 border" style={{ borderRadius: 12 }}>
                                     {/* Pose image strip preview */}
-                                    <div className="d-flex gap-1 p-2 overflow-hidden" style={{
+                                    <div className="d-flex gap-1 p-2 overflow-auto" style={{
                                         background: '#f8f9fa',
                                         borderRadius: '12px 12px 0 0',
                                         height: 72
@@ -283,6 +293,7 @@ export default function MyFlowsPage() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <SuccessToast show={showToast} message={toastMessage} onClose={() => setShowToast(false)} />
         </>
     );
 }

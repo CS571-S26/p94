@@ -25,14 +25,27 @@ export default function PoseCard(props) {
                     {props.pose.difficulty}
                 </Badge>
             </div>
-            <p>{expanded ? props.pose.description : shortDescription}</p>
+            <p className="text-muted mb-1" style={{ fontSize: '0.8rem', lineHeight: 1.5 }}>
+                {expanded ? props.pose.description : shortDescription}</p>
             {props.pose.description.length > 100 && (
             <Button
                 variant="link"
-                style={{ padding: 0 }}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    fontSize: '0.75rem',
+                    color: '#534AB7',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    marginBottom: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
+                }}
                 onClick={() => setExpanded(!expanded)}
             >
-                {expanded ? "Collapse Description" : "Expand Description"}
+                {expanded ? '▲ Less' : '▼ More'}
             </Button>
             )}
             {props.onAdd && (
