@@ -162,7 +162,7 @@ function LoggedInView({ user, recentFlows, navigate }) {
                                 </div>
                             </div>
                             <Button variant="outline-secondary" size="sm"
-                                onClick={() => navigate(`/my-flows/${flow.id}`)}>
+                                onClick={() => navigate(`/my-flows/`, { state: { openFlow: flow } })}>
                                 View
                             </Button>
                         </div>

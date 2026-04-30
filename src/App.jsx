@@ -9,14 +9,13 @@ import MyFlowsPage from './pages/MyFlowsPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Layout from './components/Layout.jsx'
 import PosesPage from './pages/PosesPage.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
-import {auth} from './firebase'
+import { auth } from './firebase'
 
 function App() {
 
-  // use firebase for authentication and session storage to keep track of login status on the frontend.
-  // test firebase connection:
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       console.log("Firebase connected. User:", user);
@@ -27,12 +26,16 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/poses" element={<PosesPage />} />
-        <Route path="/logout" element={<LogoutPage />}></Route>
-        <Route path="/create" element={<CreateFlowPage />}></Route>
-        <Route path="/my-flows" element={<MyFlowsPage />}></Route>
+        <Route path="/logout" element={<LogoutPage />} />
+        <Route path="/create" element={
+          <ProtectedRoute><CreateFlowPage /></ProtectedRoute>
+        } />
+        <Route path="/my-flows" element={
+          <ProtectedRoute><MyFlowsPage /></ProtectedRoute>
+        } />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

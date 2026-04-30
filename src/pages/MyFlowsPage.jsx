@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { collection, getDocs, deleteDoc, doc, updateDoc, orderBy, query } from 'firebase/firestore';
@@ -11,6 +11,7 @@ export default function MyFlowsPage() {
     const [flows, setFlows] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const location = useLocation();
     const [viewFlow, setViewFlow] = useState(null); // holds the flow being viewed
     const [toastMessage, setToastMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
@@ -31,6 +32,12 @@ export default function MyFlowsPage() {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteTarget, setDeleteTarget] = useState(null); // { id, name }
     const [deleting, setDeleting] = useState(false);
+
+    useEffect(() => {
+        if (location.state?.openFlow) {
+            setViewFlow(location.state.openFlow);
+        }
+    }, [location.state]);
 
     useEffect(() => {
         if (!user) return;
@@ -288,7 +295,7 @@ export default function MyFlowsPage() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-secondary" onClick={() => setViewFlow(null)}>Close</Button>
-                    <Button variant="primary" onClick={() => { setViewFlow(null); navigate(`/my-flows/${viewFlow.id}/edit`, { state: { flow: viewFlow } }); }}>
+                    <Button variant="primary" onClick={() => { setViewFlow(null); navigate(`/create`, { state: { flow: viewFlow } }); }}>
                         Edit flow
                     </Button>
                 </Modal.Footer>

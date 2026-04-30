@@ -304,6 +304,38 @@
     "difficulty": "Advanced"
   },
   {
+    "name": "Reverse Warrior",
+    "sanskrit": "viparita virabhadrasana",
+    "category": "Standing",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/WarriorIIReverse_L.png",
+    "description": "From Warrior II, the lower body stays static while the upper body arches back in a gentle backbend. The top arm is extended back with the bicep by the ear and the fingers spread wide. The other arm slides down the back leg resting on the thigh or shin, but not the knee joint. The gaze is up toward the sky.",
+    "difficulty": "Intermediate"
+  },
+  {
+    "name": "Humble Warrior",
+    "sanskrit": "baddha virabhadrasana",
+    "category": "Standing",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/WarriorHumble_L.png",
+    "description": "Begin in Warrior I with Hands Interlaced. Keep the connection with your interlaced hands, palms touching and begin to bow forward toward the inside of your front thigh. Keep a 90-degree bend in your front knee and a strong back leg by rooting down into the straight edge of your foot. Lift your interlaced hands off your lower back, up and over your head. Relax your neck and your face muscles. Try to keep your shoulders and hips squared toward the front.",
+    "difficulty": "Intermediate"
+  },
+  {
+    "name": "Revolved Warrior",
+    "sanskrit": "",
+    "category": "Standing",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/WarriorTwist_L.png",
+    "description": "From Warrior I with Prayer Hands, the torso twists toward the sky as the heart opens. The opposite elbow connects with the outside of the front bent knee. The gaze is toward the sky unless the neck is sensitive then the gaze stays down toward the earth.",
+    "difficulty": "Intermediate"
+  },
+  {
+    "name": "Warrior I Halfway Fold",
+    "sanskrit": "",
+    "category": "Standing",
+    "imageUrl": "https://pocketyoga.com/assets/images/full/WarriorIForward_L.png",
+    "description": "From a standing position, the legs are in a wide stance with the feet aligned and flat on the earth. The back foot is in a 60-degree angle toward the front. The hips are squared. The inner thighs are rotated inward toward each other. The front knee is bent in a 90-degree angle directly above the ankle. The pelvis is tucked. The ribcage is lifted. The shoulder blades are back and down, squeezing together. The hands can be together or separated and facing each other with the fingers spread wide. The lower body stays static. The upper torso gently bends forward from the crease of the hip with a straight line. The gaze is forward.",
+    "difficulty": "Intermediate"
+  },
+  {
     "name": "Wide Legged Forward Bend I",
     "sanskrit": "prasarita padottanasana a",
     "category": "Standing",
